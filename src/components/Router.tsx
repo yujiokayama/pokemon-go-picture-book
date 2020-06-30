@@ -7,8 +7,14 @@ const Router = () => {
   return (
     <BrowserRouter>
       <nav>
-        <Link to="/">TOP</Link>
-        <Link to="/page1">page1</Link>
+        <ul>
+          <li>
+            <Link to="/">TOP</Link>
+          </li>
+          <li>
+            <Link to="/page1">page1</Link>
+          </li>
+        </ul>
       </nav>
       <Switch>
         <Route path="/page1" component={Page1} />

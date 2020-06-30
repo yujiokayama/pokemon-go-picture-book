@@ -7,8 +7,8 @@ import Router from './components/Router';
 const App: React.FC = () => {
   return (
     <React.Fragment>
-      <Router />
       <TopPageContainer />
+      <Router />
       <TestGenerics />
     </React.Fragment>
   );
