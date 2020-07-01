@@ -1,4 +1,4 @@
-import { reducerWithInitialState } from '../node_modules/typescript-fsa-reducers';
+import { reducerWithInitialState } from 'typescript-fsa-reducers';
 import { TextInputActions } from './actions';
 
 //ここにstoreが持つstateを書く

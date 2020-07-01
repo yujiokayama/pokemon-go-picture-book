@@ -1,15 +1,10 @@
 import React from 'react';
-import './App.css';
-import TopPageContainer from './containers/TopPageContainer';
-import TestGenerics from './components/TestGenerics';
-import Router from './components/Router';
+import PokemonList from './components/PokemonList';
 
 const App: React.FC = () => {
   return (
     <React.Fragment>
-      <TopPageContainer />
-      <Router />
-      <TestGenerics />
+      <PokemonList />
     </React.Fragment>
   );
 };
