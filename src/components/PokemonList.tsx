@@ -4,31 +4,29 @@ import '../styles/App.css';
 interface Props {}
 
 interface State {
-  list: any;
+  dataList: any;
 }
 
 class PokemonList extends React.Component<Props, State> {
-
-
   constructor(props: any) {
     super(props);
     this.state = {
-      list: null
+      dataList: []
     };
   }
 
   componentDidMount() {
     this.getCSV().then((data) => {
       this.setState({
-        list: data
+        dataList: data
       });
     });
   }
 
   /**
-   * CSVデータをJSONに変換して取得する
+   * CSVデータを配列に変換する
    */
-  async getCSV() {
+  async getCSV(): Promise<any> {
     const fetchData = await fetch('./assets/csv/pokemon_picture_book.csv');
     const textData = await fetchData.text();
     const jsonData = () => {
@@ -40,18 +38,37 @@ class PokemonList extends React.Component<Props, State> {
       }
       return tmp;
     };
-    return this.csv2json(jsonData());
+
+    const dataKyes = jsonData()[0].split(',');
+    const dataValues = jsonData().slice(1);
+
+    const notTypesArray = dataValues.filter((v => {
+      console.log(v.match(this.typeCheck()))
+    }))
+
+    console.log(dataValues)
+
+    return textData;
   }
 
   /**
-   * 配列をJSONに変換する
+   * タイプをチェックする
    */
-  csv2json(csv: any): any {
+  typeCheck() {
+    const types =
+      'ノーマル,ほのお,みず,でんき,くさ,こおり,かくとう,どく,じめん,ひこう,エスパー,むし,いわ,ゴースト,ドラゴン,あく,はがね,フェアリー';
+    return new RegExp(types.split(',').join('|'), 'g');
+  }
+
+  /**
+   * オブジェクトに変換する
+   */
+  csv2json(arr: any): any {
     let jsonArray = [];
-    let items = csv[0].split(',');
-    for (let i = 1; i < csv.length - 1; i++) {
+    let items = arr[0].split(',');
+    for (let i = 1; i < arr.length - 1; i++) {
       let a_line: any = {};
-      let csletrayD = csv[i].split(',');
+      let csletrayD = arr[i].split(',');
 
       for (let j = 0; j < items.length; j++) {
         a_line[items[j]] = csletrayD[j];
@@ -62,11 +79,12 @@ class PokemonList extends React.Component<Props, State> {
   }
 
   render() {
+    const { dataList } = this.state;
+
     return (
       <div>
-        {this.state.list}
         {/* <ul>
-          {this.state.list.map((item) => (
+          {dataList.map((item: any) => (
             <li key={item}>{item}</li>
           ))}
         </ul> */}
