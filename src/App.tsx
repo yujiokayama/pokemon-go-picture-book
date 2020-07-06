@@ -1,5 +1,4 @@
 import React from 'react';
-import PokemonList from './components/PokemonList';
 import PictureBook from './components/PictureBook';
 
 const App: React.FC = () => {
