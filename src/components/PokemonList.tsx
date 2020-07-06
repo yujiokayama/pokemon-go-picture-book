@@ -4,7 +4,7 @@ import "../styles/App.css";
 interface Props {}
 
 interface State {
-  dataList: any;
+  dataList: object[];
 }
 
 class PokemonList extends React.Component<Props, State> {
