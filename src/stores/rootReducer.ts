@@ -1,7 +1,10 @@
-import { combineReducers } from '@reduxjs/toolkit'
+import { combineReducers } from "@reduxjs/toolkit";
+import TestModules from "./modules/testModules";
 
-const rootReducer = combineReducers({})
+const rootReducer = combineReducers({
+    test: TestModules.reducer
+});
 
-export type RootState = ReturnType<typeof rootReducer>
+export type RootState = ReturnType<typeof rootReducer>;
 
-export default rootReducer
+export default rootReducer;
