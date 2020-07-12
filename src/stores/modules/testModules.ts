@@ -1,23 +1,25 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 type State = {
-  count: number;
+  counter: number;
+  list: any
 };
 
 const initialState: State = {
-  count: 0,
+  counter: 0,
+  list: {}
 };
 
-const tasksModule = createSlice({
-  name: "test",
+const testModule = createSlice({
+  name: "counter",
   initialState,
   reducers: {
-    addCount(state: State) {
-      state.count++;
+    addCount: (state: State) => {
+      state.counter++;
     },
   },
 });
 
-export const { addCount } = tasksModule.actions;
+export const { addCount } = testModule.actions;
 
-export default tasksModule;
+export default testModule;

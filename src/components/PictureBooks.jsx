@@ -4,18 +4,9 @@ import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import Detail from "../pages/detail";
 
 import { useSelector } from "react-redux";
-import { RootState } from "../stores/rootReducer";
 
-const { counter } = useSelector((state: RootState) => state.pictureBook);
-
-interface Props {}
-
-interface State {
-  pokemonList: object[];
-}
-
-class PictureBook extends React.Component<Props, State> {
-  constructor(props: any) {
+class PictureBook extends React.Component {
+  constructor(props) {
     super(props);
     this.state = {
       pokemonList: [],
@@ -38,7 +29,7 @@ class PictureBook extends React.Component<Props, State> {
   /**
    * タイプを日本語に変換する
    */
-  typeReplaceJa(type: string[]): string {
+  typeReplaceJa(type) {
     const types = type.join(",");
     return types
       .replace(/Normal/, "ノーマル")
@@ -64,12 +55,13 @@ class PictureBook extends React.Component<Props, State> {
   /**
    * ゼロパディング
    */
-  zeroPadding(num: number, length: number): string {
+  zeroPadding(num, length) {
     return ("0000000000" + num).slice(-length);
   }
 
   render() {
     const { pokemonList } = this.state;
+    const name = useSelector((state) => state.user.name);
 
     return (
       <div>
@@ -77,6 +69,7 @@ class PictureBook extends React.Component<Props, State> {
           <Switch>
             <Route path="/detail/:name" children={<Detail />} />
           </Switch>
+          {name}
           <table>
             <thead>
               <tr>
@@ -85,7 +78,7 @@ class PictureBook extends React.Component<Props, State> {
                 <th>なまえ</th>
                 <th>タイプ</th>
               </tr>
-              {pokemonList.map((pokemon: any) => (
+              {pokemonList.map((pokemon) => (
                 <tr key={pokemon.id}>
                   <td>{pokemon.id}</td>
                   <td>
