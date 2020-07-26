@@ -1,13 +1,26 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
+import { RootState } from '../stores/rootReducer';
+import { fetchApi } from '../stores/modules/PokeModules';
 
 const Detail: React.FC = () => {
-  let { name } = useParams();
+  // const { list } = useSelector((state: RootState) => state.pokeModules);
+  // const dispatch = useDispatch();
+
+  // dispatch(fetchApi());
+
+  /**
+   * slugと同名のポケモンデータを取得する
+   */
+
   return (
     <div>
       <h1>ポケモン詳細</h1>
-      <p>name: {name}</p>
       ここにreduxで管理するデータと渡ってきたnameと等しいポケモンのデータを表示する
+      {/* {list.map((pokemon: any) => pokemon.id)} */}
     </div>
   );
 };

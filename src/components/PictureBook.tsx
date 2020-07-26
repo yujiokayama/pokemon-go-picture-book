@@ -41,12 +41,16 @@ const zeroPadding = (num: number, length: number): string => {
   return ('0000000000' + num).slice(-length);
 };
 
+
+
+
+
+
+
 const PictureBook: React.FC = () => {
   const { list } = useSelector((state: RootState) => state.pokeModules);
   const dispatch = useDispatch();
-
-  dispatch(fetchApi());
-
+  // dispatch(fetchApi());
   return (
     <div>
       <BrowserRouter>
