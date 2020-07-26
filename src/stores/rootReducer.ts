@@ -1,8 +1,8 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import TestModules from "./modules/testModules";
+import PokeModules from "./modules/PokeModules";
 
 const rootReducer = combineReducers({
-  pictureBook: TestModules.reducer
+  pokeModules: PokeModules.reducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
